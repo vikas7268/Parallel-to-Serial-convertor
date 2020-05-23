@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module serial_to_parllal_convertor#(parameter n=3)(in_data,out0,out1,out2,out3,outcoming_data,clk ,rst  );
+module serial_to_parllal_convertor #(parameter n=3)(in_data,out0,out1,out2,out3,outcoming_data,clk ,rst  );
 input [31:0] in_data;
 input clk,rst;
 output reg [31:0] out0,out1,out2,out3;
@@ -55,11 +55,6 @@ begin
           begin
             datafile[n-i] <= serial_in; 
           end
-          
-//       else if(i==n)
-//         begin
-//            outcoming_data <= datafile[n-i] ;
-//         end
         else
            begin
              datafile[n-i] <= datafile[n-i+1];
@@ -71,11 +66,11 @@ end
 
 always @(posedge clk)
 begin
-   //for(i=0;i<=n;i=i+1) 
+ 
     out0 <= datafile[n-3];
     out1 <= datafile[n-2];
     out2 <= datafile[n-1];
     out3 <= datafile[n-0];
 end
-// outcoming_data =datafile[0];
+
 endmodule
